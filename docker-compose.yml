@@ -53,9 +53,9 @@ services:
       mode: global
       resources:
         limits:
-          memory: 128M
+          memory: 512M
         reservations:
-          memory: 64M
+          memory: 256M
 
   grafana:
     image: stefanprodan/swarmprom-grafana:5.3.4
@@ -75,9 +75,9 @@ services:
           - node.role == manager
       resources:
         limits:
-          memory: 128M
+          memory: 512M
         reservations:
-          memory: 64M
+          memory: 256M
 
   alertmanager:
     image: stefanprodan/swarmprom-alertmanager:v0.14.0
@@ -100,9 +100,9 @@ services:
           - node.role == manager
       resources:
         limits:
-          memory: 128M
+          memory: 512M
         reservations:
-          memory: 64M
+          memory: 256M
 
   unsee:
     image: cloudflare/unsee:v0.8.0
@@ -135,9 +135,9 @@ services:
       mode: global
       resources:
         limits:
-          memory: 128M
+          memory: 512M
         reservations:
-          memory: 64M
+          memory: 256M
 
   prometheus:
     image: stefanprodan/swarmprom-prometheus:v2.5.0
@@ -146,7 +146,7 @@ services:
     command:
       - '--config.file=/etc/prometheus/prometheus.yml'
       - '--storage.tsdb.path=/prometheus'
-      - '--storage.tsdb.retention=24h'
+      - '--storage.tsdb.retention=12h'
     volumes:
       - prometheus:/prometheus
     configs:
@@ -159,12 +159,12 @@ services:
       replicas: 1
       placement:
         constraints:
-          - node.id == kjspxiej7w346o5nyr974xo5j
+          - node.id == "master node with low mem usage"
       resources:
         limits:
-          memory: 2048M
+          memory: 6114M
         reservations:
-          memory: 1024M
+          memory: 3072M
 
   caddy:
     image: stefanprodan/caddy
@@ -189,9 +189,9 @@ services:
           - node.role == manager
       resources:
         limits:
-          memory: 128M
+          memory: 512M
         reservations:
-          memory: 64M
+          memory: 256M
     healthcheck:
       test: ["CMD", "curl", "-f", "http://localhost:3000"]
       interval: 5s
