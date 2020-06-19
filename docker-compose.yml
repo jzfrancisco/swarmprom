@@ -53,9 +53,9 @@ services:
       mode: global
       resources:
         limits:
-          memory: 128M
+          memory: 2048M
         reservations:
-          memory: 64M
+          memory: 1024M
 
   grafana:
     image: stefanprodan/swarmprom-grafana:5.3.4
@@ -146,7 +146,7 @@ services:
     command:
       - '--config.file=/etc/prometheus/prometheus.yml'
       - '--storage.tsdb.path=/prometheus'
-      - '--storage.tsdb.retention=24h'
+      - '--storage.tsdb.retention=12h'
     volumes:
       - prometheus:/prometheus
     configs:
@@ -162,9 +162,9 @@ services:
           - node.id == kjspxiej7w346o5nyr974xo5j
       resources:
         limits:
-          memory: 2048M
+          memory: 7168M
         reservations:
-          memory: 1024M
+          memory: 2048M
 
   caddy:
     image: stefanprodan/caddy
