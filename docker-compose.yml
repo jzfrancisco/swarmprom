@@ -34,6 +34,7 @@ services:
       mode: global
       resources:
         limits:
+          cpu: 1
           memory: 128M
         reservations:
           memory: 64M
@@ -53,9 +54,16 @@ services:
       mode: global
       resources:
         limits:
+<<<<<<< HEAD
           memory: 2048M
         reservations:
           memory: 1024M
+=======
+          cpu: 1
+          memory: 512M
+        reservations:
+          memory: 256M
+>>>>>>> 681664bce447b6cef27b12d440c6b0d56303b84d
 
   grafana:
     image: stefanprodan/swarmprom-grafana:5.3.4
@@ -75,9 +83,10 @@ services:
           - node.role == manager
       resources:
         limits:
-          memory: 128M
+          cpu: 1
+          memory: 512M
         reservations:
-          memory: 64M
+          memory: 256M
 
   alertmanager:
     image: stefanprodan/swarmprom-alertmanager:v0.14.0
@@ -100,9 +109,10 @@ services:
           - node.role == manager
       resources:
         limits:
-          memory: 128M
+          cpu: 1
+          memory: 512M
         reservations:
-          memory: 64M
+          memory: 256M
 
   unsee:
     image: cloudflare/unsee:v0.8.0
@@ -135,9 +145,10 @@ services:
       mode: global
       resources:
         limits:
-          memory: 128M
+          cpu: 1
+          memory: 512M
         reservations:
-          memory: 64M
+          memory: 256M
 
   prometheus:
     image: stefanprodan/swarmprom-prometheus:v2.5.0
@@ -159,12 +170,19 @@ services:
       replicas: 1
       placement:
         constraints:
-          - node.id == kjspxiej7w346o5nyr974xo5j
+          - node.id == "master node with low mem usage"
       resources:
         limits:
+<<<<<<< HEAD
           memory: 7168M
         reservations:
           memory: 2048M
+=======
+          cpu: 1
+          memory: 6114M
+        reservations:
+          memory: 3072M
+>>>>>>> 681664bce447b6cef27b12d440c6b0d56303b84d
 
   caddy:
     image: stefanprodan/caddy
@@ -189,9 +207,10 @@ services:
           - node.role == manager
       resources:
         limits:
-          memory: 128M
+          cpu: 1
+          memory: 512M
         reservations:
-          memory: 64M
+          memory: 256M
     healthcheck:
       test: ["CMD", "curl", "-f", "http://localhost:3000"]
       interval: 5s
