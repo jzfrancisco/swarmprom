@@ -149,7 +149,7 @@ services:
     networks:
       - net
     command:
-      - '--config.file=/etc/prometheus/weave-cortex.yml'
+     #- '--config.file=/etc/prometheus/weave-cortex.yml'
       - '--config.file=/etc/prometheus/prometheus.yml'
       - '--storage.tsdb.path=/prometheus'
       - '--storage.tsdb.retention=12h'
@@ -165,7 +165,7 @@ services:
       replicas: 1
       placement:
         constraints:
-          - node.id == 'kjspxiej7w346o5nyr974xo5j'
+          - node.id == kjspxiej7w346o5nyr974xo5j
       resources:
         limits:
           cpus: "1"
@@ -206,20 +206,20 @@ services:
       timeout: 1s
       retries: 5
 
-  scope-launcher:
-    image: weaveworks/scope-swarm-launcher
-    networks:
-      - net
-    command: scope launch --service-token=$TOKEN
-    volumes:
-      - /var/run/docker.sock:/var/run/docker.sock
-    deploy:
-      mode: global
-      restart_policy:
-        condition: none
-      resources:
-        limits:
-          cpus: "1"
-          memory: 512M
-        reservations:
-          memory: 256M
+#  scope-launcher:
+#    image: weaveworks/scope-swarm-launcher
+#    networks:
+#      - net
+#    command: scope launch --service-token=$TOKEN
+#    volumes:
+#      - /var/run/docker.sock:/var/run/docker.sock
+#    deploy:
+#      mode: global
+#      restart_policy:
+#        condition: none
+#      resources:
+#        limits:
+#          cpus: "1"
+#          memory: 512M
+#        reservations:
+#          memory: 256M
