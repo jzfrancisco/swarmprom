@@ -34,7 +34,7 @@ services:
       mode: global
       resources:
         limits:
-          cpu: 1
+          cpus: "1"
           memory: 128M
         reservations:
           memory: 64M
@@ -54,16 +54,10 @@ services:
       mode: global
       resources:
         limits:
-<<<<<<< HEAD
-          memory: 2048M
-        reservations:
-          memory: 1024M
-=======
-          cpu: 1
+          cpus: "1"
           memory: 512M
         reservations:
           memory: 256M
->>>>>>> 681664bce447b6cef27b12d440c6b0d56303b84d
 
   grafana:
     image: stefanprodan/swarmprom-grafana:5.3.4
@@ -83,7 +77,7 @@ services:
           - node.role == manager
       resources:
         limits:
-          cpu: 1
+          cpus: "1"
           memory: 512M
         reservations:
           memory: 256M
@@ -109,7 +103,7 @@ services:
           - node.role == manager
       resources:
         limits:
-          cpu: 1
+          cpus: "1"
           memory: 512M
         reservations:
           memory: 256M
@@ -145,7 +139,7 @@ services:
       mode: global
       resources:
         limits:
-          cpu: 1
+          cpus: "1"
           memory: 512M
         reservations:
           memory: 256M
@@ -170,19 +164,13 @@ services:
       replicas: 1
       placement:
         constraints:
-          - node.id == "master node with low mem usage"
+          - node.id == 'kjspxiej7w346o5nyr974xo5j'
       resources:
         limits:
-<<<<<<< HEAD
-          memory: 7168M
-        reservations:
-          memory: 2048M
-=======
-          cpu: 1
+          cpus: "1"
           memory: 6114M
         reservations:
           memory: 3072M
->>>>>>> 681664bce447b6cef27b12d440c6b0d56303b84d
 
   caddy:
     image: stefanprodan/caddy
@@ -207,7 +195,7 @@ services:
           - node.role == manager
       resources:
         limits:
-          cpu: 1
+          cpus: "1"
           memory: 512M
         reservations:
           memory: 256M
